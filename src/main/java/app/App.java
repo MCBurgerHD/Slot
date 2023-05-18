@@ -31,7 +31,7 @@ public class App extends Application {
     private int account = 10000;
 
     // Symbols
-    private static final String[] SYMBOLS = {"Cherry", "Lemon", "Orange", "Plum", "Bell", "Bar", "Seven"};
+    private static final String[] SYMBOLS = {"Cherry", "Lemon", "Orange", "Plum", "Bell", "Bar", "Seven", "Diamond"};
     private final Image seven = new Image("/seven.png");
     private final Image bell = new Image("/bell.png");
     private final Image bar = new Image("/bar.png");
@@ -39,6 +39,7 @@ public class App extends Application {
     private final Image lemon = new Image("/lemon.png");
     private final Image cherry = new Image("/cherry.png");
     private final Image plum = new Image("/plum.png");
+    private final Image diamond = new Image("/diamond.png");
 
 
     @Override
@@ -135,6 +136,8 @@ public class App extends Application {
                 return bar;
             case "Seven":
                 return seven;
+            case "Diamond":
+                return diamond;
         }
         return null;
     }
