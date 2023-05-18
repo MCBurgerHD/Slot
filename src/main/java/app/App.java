@@ -115,7 +115,7 @@ public class App extends Application {
             account += 1000;
             resultLabel.setTextFill(Color.GREEN);
             resultLabel.setText("You won!");
-            popUp();
+            popUpWin();
         } else {
             resultLabel.setTextFill(Color.RED);
             resultLabel.setText("Try Again!");
@@ -144,6 +144,11 @@ public class App extends Application {
         return null;
     }
     private boolean isWinningCombination() {
+        if (account <= 0) {
+            account = 10;
+            popUpNoMoney();
+        }
+
         String symbol = currentSymbols[0];
         for (int i = 1; i < NUM_REELS; i++) {
             if (!currentSymbols[i].equals(symbol)) {
@@ -154,7 +159,7 @@ public class App extends Application {
     }
 
     // Create a PopUp Window to anounce that you have WON!
-    public static void popUp() {
+    public static void popUpWin() {
         Stage popupwindow=new Stage();
 
         popupwindow.initModality(Modality.APPLICATION_MODAL);
@@ -174,6 +179,31 @@ public class App extends Application {
 
 
         layout.getChildren().addAll(label1/*, button1*/);
+
+        layout.setAlignment(Pos.CENTER);
+
+        Scene scene1= new Scene(layout, 100, 50);
+
+        popupwindow.setScene(scene1);
+
+        popupwindow.showAndWait();
+
+    }
+
+    // Create a PopUp Window to anounce that you have no money left!
+    public static void popUpNoMoney() {
+        Stage popupwindow=new Stage();
+
+        popupwindow.initModality(Modality.APPLICATION_MODAL);
+        popupwindow.setTitle("No Money!");
+
+
+        Label label1= new Label("You have no money left");
+
+        VBox layout= new VBox(10);
+
+
+        layout.getChildren().addAll(label1);
 
         layout.setAlignment(Pos.CENTER);
 
