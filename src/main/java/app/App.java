@@ -23,7 +23,7 @@ public class App extends Application {
     private final Random random = new Random();
     private final Label resultLabel = new Label();
     private final Button spinButton = new Button("Spin");
-    private final Label amount = new Label();
+    private final Label accountValue = new Label();
 
     private final Rectangle[] reels = new Rectangle[NUM_REELS];
     private final String[] currentSymbols = new String[NUM_REELS];
@@ -96,7 +96,7 @@ public class App extends Application {
     private HBox createResultBox() {
         HBox resultBox = new HBox(10);
         resultBox.setAlignment(Pos.CENTER);
-        resultBox.getChildren().addAll(spinButton, resultLabel, amount);
+        resultBox.getChildren().addAll(spinButton, resultLabel, accountValue);
 
 
         return resultBox;
@@ -104,7 +104,7 @@ public class App extends Application {
 
     private void spinReels() {
         account = account - 10;
-        amount.setText(String.valueOf(account));
+        accountValue.setText(String.valueOf(account));
         for (int i = 0; i < NUM_REELS; i++) {
             String symbol = SYMBOLS[random.nextInt(SYMBOLS.length)];
             currentSymbols[i] = symbol;
