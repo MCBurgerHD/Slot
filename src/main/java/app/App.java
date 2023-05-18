@@ -168,17 +168,9 @@ public class App extends Application {
 
         Label label1= new Label("You Won");
 
-
-        //Button button1= new Button("Play Again!");
-
-        //button1.setOnAction(e -> popupwindow.close());
-
-
-
         VBox layout= new VBox(10);
 
-
-        layout.getChildren().addAll(label1/*, button1*/);
+        layout.getChildren().addAll(label1);
 
         layout.setAlignment(Pos.CENTER);
 
