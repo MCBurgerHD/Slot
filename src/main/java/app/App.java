@@ -113,9 +113,11 @@ public class App extends Application {
 
         if (isWinningCombination()) {
             account += 1000;
+            resultLabel.setTextFill(Color.GREEN);
             resultLabel.setText("You won!");
             popUp();
         } else {
+            resultLabel.setTextFill(Color.RED);
             resultLabel.setText("Try Again!");
         }
     }
@@ -175,7 +177,7 @@ public class App extends Application {
 
         layout.setAlignment(Pos.CENTER);
 
-        Scene scene1= new Scene(layout, 300, 250);
+        Scene scene1= new Scene(layout, 100, 50);
 
         popupwindow.setScene(scene1);
 
