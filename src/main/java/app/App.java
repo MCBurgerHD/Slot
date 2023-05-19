@@ -24,10 +24,14 @@ public class App extends Application {
     private final Label resultLabel = new Label();
     private final Button spinButton = new Button("Spin");
     private final Label accountValue = new Label();
+    private final Label currntBet = new Label();
+    private final Button higherButton = new Button("Higher");
+    private final Button lowerButton = new Button("Lower");
 
     private final Rectangle[] reels = new Rectangle[NUM_REELS];
     private final String[] currentSymbols = new String[NUM_REELS];
 
+    private int bet = 10;
     private int account = 10000;
 
     // Symbols
@@ -54,6 +58,8 @@ public class App extends Application {
         root.setPadding(new Insets(20));
 
         spinButton.setOnAction(event -> spinReels());
+        higherButton.setOnAction(event -> betHigher());
+        lowerButton.setOnAction(event -> betLower());
         resultLabel.setTextFill(Color.RED);
 
         Scene scene = new Scene(root);
@@ -62,10 +68,10 @@ public class App extends Application {
         primaryStage.show();
     }
 
-    private GridPane createGridPane() {
+    public GridPane createGridPane() {
         GridPane gridPane = new GridPane();
         gridPane.setAlignment(Pos.CENTER);
-        gridPane.setHgap(10);
+        gridPane.setHgap(20);
 
         for (int i = 0; i < NUM_REELS; i++) {
             ColumnConstraints columnConstraints = new ColumnConstraints();
@@ -76,7 +82,7 @@ public class App extends Application {
         return gridPane;
     }
 
-    private void addReelsToGrid(GridPane gridPane) {
+    public void addReelsToGrid(GridPane gridPane) {
         for (int i = 0; i < NUM_REELS; i++) {
             Rectangle reel = createReel();
             reels[i] = reel;
@@ -84,7 +90,7 @@ public class App extends Application {
         }
     }
 
-    private Rectangle createReel() {
+    public Rectangle createReel() {
         Rectangle reel = new Rectangle(80, 120);
         reel.setFill(new ImagePattern(seven));
         reel.setStroke(Color.BLACK);
@@ -93,17 +99,17 @@ public class App extends Application {
         return reel;
     }
 
-    private HBox createResultBox() {
+    public HBox createResultBox() {
         HBox resultBox = new HBox(10);
         resultBox.setAlignment(Pos.CENTER);
-        resultBox.getChildren().addAll(spinButton, resultLabel, accountValue);
+        resultBox.getChildren().addAll(spinButton, higherButton, lowerButton, resultLabel, accountValue, currntBet);
 
 
         return resultBox;
     }
 
-    private void spinReels() {
-        account = account - 10;
+    public void spinReels() {
+        account = account - bet;
         accountValue.setText(String.valueOf(account));
         for (int i = 0; i < NUM_REELS; i++) {
             String symbol = SYMBOLS[random.nextInt(SYMBOLS.length)];
@@ -122,7 +128,7 @@ public class App extends Application {
         }
     }
 
-    private Image getSymbolImage(String symbol) {
+    public Image getSymbolImage(String symbol) {
         switch (symbol) {
             case "Cherry":
                 return cherry;
@@ -143,9 +149,9 @@ public class App extends Application {
         }
         return null;
     }
-    private boolean isWinningCombination() {
+    public boolean isWinningCombination() {
         if (account <= 0) {
-            account = 10;
+            account = bet;
             popUpNoMoney();
         }
 
@@ -156,6 +162,24 @@ public class App extends Application {
             }
         }
         return true;
+    }
+
+    public void betHigher() {
+        if (bet < 1000) {
+            bet += 10;
+            currntBet.setText(String.valueOf(bet));
+        } else {
+            resultLabel.setText("Maximal Bet reached!");
+        }
+    }
+
+    public void betLower() {
+        if (bet == 10) {
+            resultLabel.setText("Minimal Bet reached!");
+        } else {
+            bet -= 10;
+            currntBet.setText(String.valueOf(bet));
+        }
     }
 
     // Create a PopUp Window to anounce that you have WON!
