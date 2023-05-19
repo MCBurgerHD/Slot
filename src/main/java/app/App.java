@@ -169,13 +169,13 @@ public class App extends Application {
             bet += 10;
             currntBet.setText(String.valueOf(bet));
         } else {
-            resultLabel.setText("Maximal Bet reached!");
+            resultLabel.setText("max Bet!");
         }
     }
 
     public void betLower() {
         if (bet == 10) {
-            resultLabel.setText("Minimal Bet reached!");
+            resultLabel.setText("min Bet!");
         } else {
             bet -= 10;
             currntBet.setText(String.valueOf(bet));
@@ -214,7 +214,7 @@ public class App extends Application {
         popupwindow.setTitle("No Money!");
 
 
-        Label label1= new Label("You have no money left");
+        Label label1= new Label("No money left");
 
         VBox layout= new VBox(10);
 
@@ -223,7 +223,7 @@ public class App extends Application {
 
         layout.setAlignment(Pos.CENTER);
 
-        Scene scene1= new Scene(layout, 100, 50);
+        Scene scene1= new Scene(layout, 150, 50);
 
         popupwindow.setScene(scene1);
 
