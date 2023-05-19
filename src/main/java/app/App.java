@@ -71,7 +71,7 @@ public class App extends Application {
     public GridPane createGridPane() {
         GridPane gridPane = new GridPane();
         gridPane.setAlignment(Pos.CENTER);
-        gridPane.setHgap(20);
+        gridPane.setHgap(30);
 
         for (int i = 0; i < NUM_REELS; i++) {
             ColumnConstraints columnConstraints = new ColumnConstraints();
@@ -118,7 +118,7 @@ public class App extends Application {
         }
 
         if (isWinningCombination()) {
-            account += 1000;
+            account += bet * 2;
             resultLabel.setTextFill(Color.GREEN);
             resultLabel.setText("You won!");
             popUpWin();
