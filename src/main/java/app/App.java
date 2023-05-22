@@ -24,7 +24,7 @@ public class App extends Application {
     private final Label resultLabel = new Label();
     private final Button spinButton = new Button("Spin");
     private final Label accountValue = new Label();
-    private final Label currntBet = new Label();
+    private final Label currentBet = new Label();
     private final Button higherButton = new Button("Higher");
     private final Button lowerButton = new Button("Lower");
 
@@ -102,7 +102,7 @@ public class App extends Application {
     public HBox createResultBox() {
         HBox resultBox = new HBox(10);
         resultBox.setAlignment(Pos.CENTER);
-        resultBox.getChildren().addAll(spinButton, higherButton, lowerButton, resultLabel, accountValue, currntBet);
+        resultBox.getChildren().addAll(spinButton, higherButton, lowerButton, resultLabel, accountValue, currentBet);
 
 
         return resultBox;
@@ -167,7 +167,7 @@ public class App extends Application {
     public void betHigher() {
         if (bet < 1000) {
             bet += 10;
-            currntBet.setText(String.valueOf(bet));
+            currentBet.setText(String.valueOf(bet));
         } else {
             resultLabel.setText("max Bet!");
         }
@@ -178,7 +178,7 @@ public class App extends Application {
             resultLabel.setText("min Bet!");
         } else {
             bet -= 10;
-            currntBet.setText(String.valueOf(bet));
+            currentBet.setText(String.valueOf(bet));
         }
     }
 
