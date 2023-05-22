@@ -214,7 +214,7 @@ public class App extends Application {
         popupwindow.setTitle("No Money!");
 
 
-        Label label1= new Label("No money left");
+        Label label1= new Label("You have no money left");
 
         VBox layout= new VBox(10);
 
