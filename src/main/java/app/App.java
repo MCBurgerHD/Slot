@@ -118,7 +118,32 @@ public class App extends Application {
         }
 
         if (isWinningCombination()) {
-            account += bet * 2;
+            for (int i = 0; i < currentSymbols.length; i++) {
+                if (currentSymbols[i].equals("Cherry")) {
+                    account += bet * 1.1;
+                }
+                if (currentSymbols[i].equals("Lemon")) {
+                    account += bet * 1.4;
+                }
+                if (currentSymbols[i].equals("Orange")) {
+                    account += bet * 1.7;
+                }
+                if (currentSymbols[i].equals("Plum")) {
+                    account += bet * 1.9;
+                }
+                if (currentSymbols[i].equals("Bell")) {
+                    account += bet * 2.3;
+                }
+                if (currentSymbols[i].equals("Bar")) {
+                    account += bet * 2.6;
+                }
+                if (currentSymbols[i].equals("Diamond")) {
+                    account += bet * 3.3;
+                }
+                if (currentSymbols[i].equals("Seven")) {
+                    account += bet * 4;
+                }
+            }
             resultLabel.setTextFill(Color.GREEN);
             resultLabel.setText("You won!");
             popUpWin();
