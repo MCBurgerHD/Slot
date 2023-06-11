@@ -109,47 +109,51 @@ public class App extends Application {
     }
 
     public void spinReels() {
-        account = account - bet;
-        accountValue.setText(String.valueOf(account));
-        for (int i = 0; i < NUM_REELS; i++) {
-            String symbol = SYMBOLS[random.nextInt(SYMBOLS.length)];
-            currentSymbols[i] = symbol;
-            reels[i].setFill(new ImagePattern(getSymbolImage(symbol)));
-        }
-
-        if (isWinningCombination()) {
-            for (int i = 0; i < currentSymbols.length; i++) {
-                if (currentSymbols[i].equals("Cherry")) {
-                    account += bet * 1.1;
-                }
-                if (currentSymbols[i].equals("Lemon")) {
-                    account += bet * 1.4;
-                }
-                if (currentSymbols[i].equals("Orange")) {
-                    account += bet * 1.7;
-                }
-                if (currentSymbols[i].equals("Plum")) {
-                    account += bet * 1.9;
-                }
-                if (currentSymbols[i].equals("Bell")) {
-                    account += bet * 2.3;
-                }
-                if (currentSymbols[i].equals("Bar")) {
-                    account += bet * 2.6;
-                }
-                if (currentSymbols[i].equals("Diamond")) {
-                    account += bet * 3.3;
-                }
-                if (currentSymbols[i].equals("Seven")) {
-                    account += bet * 4;
-                }
-            }
-            resultLabel.setTextFill(Color.GREEN);
-            resultLabel.setText("You won!");
-            popUpWin();
+        if (account - bet < 0) {
+            notEnoughMoneyForBet();
         } else {
-            resultLabel.setTextFill(Color.RED);
-            resultLabel.setText("Try Again!");
+            account = account - bet;
+            accountValue.setText(String.valueOf(account));
+            for (int i = 0; i < NUM_REELS; i++) {
+                String symbol = SYMBOLS[random.nextInt(SYMBOLS.length)];
+                currentSymbols[i] = symbol;
+                reels[i].setFill(new ImagePattern(getSymbolImage(symbol)));
+            }
+
+            if (isWinningCombination()) {
+                for (int i = 0; i < currentSymbols.length; i++) {
+                    if (currentSymbols[i].equals("Cherry")) {
+                        account += bet * 1.1;
+                    }
+                    if (currentSymbols[i].equals("Lemon")) {
+                        account += bet * 1.4;
+                    }
+                    if (currentSymbols[i].equals("Orange")) {
+                        account += bet * 1.7;
+                    }
+                    if (currentSymbols[i].equals("Plum")) {
+                        account += bet * 1.9;
+                    }
+                    if (currentSymbols[i].equals("Bell")) {
+                        account += bet * 2.3;
+                    }
+                    if (currentSymbols[i].equals("Bar")) {
+                        account += bet * 2.6;
+                    }
+                    if (currentSymbols[i].equals("Diamond")) {
+                        account += bet * 3.3;
+                    }
+                    if (currentSymbols[i].equals("Seven")) {
+                        account += bet * 4;
+                    }
+                }
+                resultLabel.setTextFill(Color.GREEN);
+                resultLabel.setText("You won!");
+                popUpWin();
+            } else {
+                resultLabel.setTextFill(Color.RED);
+                resultLabel.setText("Try Again!");
+            }
         }
     }
 
@@ -209,7 +213,7 @@ public class App extends Application {
 
     // Create a PopUp Window to anounce that you have WON!
     public static void popUpWin() {
-        Stage popupwindow=new Stage();
+        Stage popupwindow = new Stage();
 
         popupwindow.initModality(Modality.APPLICATION_MODAL);
         popupwindow.setTitle("You Won!");
@@ -233,7 +237,7 @@ public class App extends Application {
 
     // Create a PopUp Window to anounce that you have no money left!
     public static void popUpNoMoney() {
-        Stage popupwindow=new Stage();
+        Stage popupwindow = new Stage();
 
         popupwindow.initModality(Modality.APPLICATION_MODAL);
         popupwindow.setTitle("No Money!");
@@ -249,6 +253,31 @@ public class App extends Application {
         layout.setAlignment(Pos.CENTER);
 
         Scene scene1= new Scene(layout, 150, 50);
+
+        popupwindow.setScene(scene1);
+
+        popupwindow.showAndWait();
+
+    }
+
+    // Create a PopUp Window to anounce that you have no money left!
+    public static void notEnoughMoneyForBet() {
+        Stage popupwindow = new Stage();
+
+        popupwindow.initModality(Modality.APPLICATION_MODAL);
+        popupwindow.setTitle("Not enough money left!");
+
+
+        Label label1= new Label("You don't have enough money left for your current bet!");
+
+        VBox layout= new VBox(10);
+
+
+        layout.getChildren().addAll(label1);
+
+        layout.setAlignment(Pos.CENTER);
+
+        Scene scene1= new Scene(layout, 300, 50);
 
         popupwindow.setScene(scene1);
 
