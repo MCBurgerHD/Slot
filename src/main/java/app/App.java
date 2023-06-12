@@ -24,14 +24,15 @@ public class App extends Application {
     private final Label resultLabel = new Label();
     private final Button spinButton = new Button("Spin");
     private final Label accountValue = new Label();
-    private final Label currentBet = new Label();
-    private final Button higherButton = new Button("Higher");
-    private final Button lowerButton = new Button("Lower");
+    private static final Label currentBet = new Label();
+    /*private final Button higherButton = new Button("Higher");
+    private final Button lowerButton = new Button("Lower");*/
+    private final Button setBet = new Button("Bet");
 
     private final Rectangle[] reels = new Rectangle[NUM_REELS];
     private final String[] currentSymbols = new String[NUM_REELS];
 
-    private int bet = 10;
+    private static int bet = 10;
     private int account = 10000;
 
     // Symbols
@@ -54,14 +55,16 @@ public class App extends Application {
         HBox resultBox = createResultBox();
         VBox root = new VBox(gridPane, resultBox);
         root.setAlignment(Pos.CENTER);
-        root.setSpacing(20);
-        root.setPadding(new Insets(20));
+        root.setSpacing(25);
+        root.setPadding(new Insets(25));
 
         spinButton.setOnAction(event -> spinReels());
-        higherButton.setOnAction(event -> betHigher());
-        lowerButton.setOnAction(event -> betLower());
+        /*higherButton.setOnAction(event -> betHigher());
+        lowerButton.setOnAction(event -> betLower());*/
+        setBet.setOnAction(event -> makeBetWindow());
         resultLabel.setTextFill(Color.RED);
 
+        primaryStage.getIcons().add(new Image("/icon.png"));
         Scene scene = new Scene(root);
         primaryStage.setTitle("Slot Machine");
         primaryStage.setScene(scene);
@@ -102,7 +105,7 @@ public class App extends Application {
     public HBox createResultBox() {
         HBox resultBox = new HBox(10);
         resultBox.setAlignment(Pos.CENTER);
-        resultBox.getChildren().addAll(spinButton, higherButton, lowerButton, resultLabel, accountValue, currentBet);
+        resultBox.getChildren().addAll(spinButton/*, higherButton, lowerButton*/, setBet , resultLabel, accountValue, currentBet);
 
 
         return resultBox;
@@ -260,7 +263,7 @@ public class App extends Application {
 
     }
 
-    // Create a PopUp Window to anounce that you have no money left!
+    // Create a PopUp Window to anounce that you have don't have enough money left for the spin!
     public static void notEnoughMoneyForBet() {
         Stage popupwindow = new Stage();
 
@@ -284,4 +287,55 @@ public class App extends Application {
         popupwindow.showAndWait();
 
     }
+
+    public static void makeBetWindow() {
+        Stage popupwindow = new Stage();
+
+        popupwindow.initModality(Modality.APPLICATION_MODAL);
+        popupwindow.setTitle("Set your bet!");
+
+        Button btn10 = new Button("10");
+        Button btn20 = new Button("20");
+        Button btn30 = new Button("30");
+        Button btn40 = new Button("40");
+        Button btn50 = new Button("50");
+        Button btn60 = new Button("60");
+        Button btn70 = new Button("70");
+        Button btn80 = new Button("80");
+        Button btn90 = new Button("90");
+        Button btn100 = new Button("100");
+
+
+
+        btn10.setOnAction(event -> setBet(10,popupwindow));
+        btn20.setOnAction(event -> setBet(20,popupwindow));
+        btn30.setOnAction(event -> setBet(30,popupwindow));
+        btn40.setOnAction(event -> setBet(40,popupwindow));
+        btn50.setOnAction(event -> setBet(50,popupwindow));
+        btn60.setOnAction(event -> setBet(60,popupwindow));
+        btn70.setOnAction(event -> setBet(70,popupwindow));
+        btn80.setOnAction(event -> setBet(80,popupwindow));
+        btn90.setOnAction(event -> setBet(90,popupwindow));
+        btn100.setOnAction(event -> setBet(100,popupwindow));
+
+
+        HBox layout = new HBox(10);
+
+        layout.getChildren().addAll(btn10, btn20, btn30, btn40, btn50, btn60, btn70, btn80, btn90, btn100);
+
+        layout.setAlignment(Pos.CENTER);
+
+        Scene scene1= new Scene(layout, 400, 150);
+
+        popupwindow.setScene(scene1);
+
+        popupwindow.showAndWait();
+    }
+
+    public static void setBet(int value, Stage popupwindow) {
+        bet = value;
+        currentBet.setText(String.valueOf(bet));
+        popupwindow.close();
+    }
+
 }
