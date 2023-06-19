@@ -287,7 +287,7 @@ public class V2 extends Application {
             }
         });
 
-        btn.setOnAction(event -> testBet((int) Math.round(slider.getValue()), popupwindow));
+        btn.setOnAction(event -> setBet((int) Math.round(slider.getValue()), popupwindow));
 
         HBox layout = new HBox(10);
 
@@ -302,7 +302,7 @@ public class V2 extends Application {
         popupwindow.showAndWait();
     }
 
-    public static void testBet(int sliderValue, Stage popupwindow) {
+    public static void setBet(int sliderValue, Stage popupwindow) {
         bet = sliderValue;
         currentBet.setText(String.valueOf(bet));
         popupwindow.close();
