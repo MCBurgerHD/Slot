@@ -3,6 +3,7 @@ package app;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -124,30 +125,30 @@ public class App extends Application {
             }
 
             if (isWinningCombination()) {
-                for (int i = 0; i < currentSymbols.length; i++) {
-                    if (currentSymbols[i].equals("Cherry")) {
+                for (String currentSymbol : currentSymbols) {
+                    if (currentSymbol.equals("Cherry")) {
                         account += bet * 1.1;
                     }
-                    if (currentSymbols[i].equals("Lemon")) {
+                    if (currentSymbol.equals("Lemon")) {
                         account += bet * 1.4;
                     }
-                    if (currentSymbols[i].equals("Orange")) {
-                        account += bet * 1.7;
+                    if (currentSymbol.equals("Orange")) {
+                        account += bet * 2;
                     }
-                    if (currentSymbols[i].equals("Plum")) {
-                        account += bet * 1.9;
+                    if (currentSymbol.equals("Plum")) {
+                        account += bet * 3;
                     }
-                    if (currentSymbols[i].equals("Bell")) {
-                        account += bet * 2.3;
+                    if (currentSymbol.equals("Bell")) {
+                        account += bet * 3.6;
                     }
-                    if (currentSymbols[i].equals("Bar")) {
-                        account += bet * 2.6;
+                    if (currentSymbol.equals("Bar")) {
+                        account += bet * 5;
                     }
-                    if (currentSymbols[i].equals("Diamond")) {
-                        account += bet * 3.3;
+                    if (currentSymbol.equals("Diamond")) {
+                        account += bet * 8;
                     }
-                    if (currentSymbols[i].equals("Seven")) {
-                        account += bet * 4;
+                    if (currentSymbol.equals("Seven")) {
+                        account += bet * 10;
                     }
                 }
                 resultLabel.setTextFill(Color.GREEN);
@@ -304,7 +305,16 @@ public class App extends Application {
         Button btn80 = new Button("80");
         Button btn90 = new Button("90");
         Button btn100 = new Button("100");
-
+        Button btn110 = new Button("110");
+        Button btn120 = new Button("120");
+        Button btn130 = new Button("130");
+        Button btn140 = new Button("140");
+        Button btn150 = new Button("150");
+        Button btn160 = new Button("160");
+        Button btn170 = new Button("170");
+        Button btn180 = new Button("180");
+        Button btn190 = new Button("190");
+        Button btn200 = new Button("200");
 
 
         btn10.setOnAction(event -> setBet(10,popupwindow));
@@ -317,15 +327,28 @@ public class App extends Application {
         btn80.setOnAction(event -> setBet(80,popupwindow));
         btn90.setOnAction(event -> setBet(90,popupwindow));
         btn100.setOnAction(event -> setBet(100,popupwindow));
+        /*btn110.setOnAction(event -> setBet(110,popupwindow));
+        btn120.setOnAction(event -> setBet(120,popupwindow));
+        btn130.setOnAction(event -> setBet(130,popupwindow));
+        btn140.setOnAction(event -> setBet(140,popupwindow));
+        btn150.setOnAction(event -> setBet(150,popupwindow));
+        btn160.setOnAction(event -> setBet(160,popupwindow));
+        btn180.setOnAction(event -> setBet(180,popupwindow));
+        btn190.setOnAction(event -> setBet(190,popupwindow));
+        btn200.setOnAction(event -> setBet(200,popupwindow));*/
 
 
         HBox layout = new HBox(10);
+        HBox layout2 = new HBox(10);
 
         layout.getChildren().addAll(btn10, btn20, btn30, btn40, btn50, btn60, btn70, btn80, btn90, btn100);
 
-        layout.setAlignment(Pos.CENTER);
+        //layout2.getChildren().addAll(btn110, btn120, btn130, btn140, btn150, btn160, btn170, btn180, btn190, btn200);
 
-        Scene scene1= new Scene(layout, 400, 150);
+        layout.setAlignment(Pos.CENTER);
+        layout2.setAlignment(Pos.CENTER);
+
+        Scene scene1 = new Scene(layout, 400, 60);
 
         popupwindow.setScene(scene1);
 
@@ -338,4 +361,7 @@ public class App extends Application {
         popupwindow.close();
     }
 
+    public static void testBet() {
+
+    }
 }
