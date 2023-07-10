@@ -325,6 +325,16 @@ public class App extends Application {
         Button btn280 = new Button("280");
         Button btn290 = new Button("290");
         Button btn300 = new Button("300");
+        Button btn310 = new Button("310");
+        Button btn320 = new Button("320");
+        Button btn330 = new Button("330");
+        Button btn340 = new Button("340");
+        Button btn350 = new Button("350");
+        Button btn360 = new Button("360");
+        Button btn370 = new Button("370");
+        Button btn380 = new Button("380");
+        Button btn390 = new Button("390");
+        Button btn400 = new Button("400");
 
         btn10.setPrefSize(40, 30);
         btn20.setPrefSize(40, 30);
@@ -356,6 +366,16 @@ public class App extends Application {
         btn280.setPrefSize(40, 30);
         btn290.setPrefSize(40, 30);
         btn300.setPrefSize(40, 30);
+        btn310.setPrefSize(40, 30);
+        btn320.setPrefSize(40, 30);
+        btn330.setPrefSize(40, 30);
+        btn340.setPrefSize(40, 30);
+        btn350.setPrefSize(40, 30);
+        btn360.setPrefSize(40, 30);
+        btn370.setPrefSize(40, 30);
+        btn380.setPrefSize(40, 30);
+        btn390.setPrefSize(40, 30);
+        btn400.setPrefSize(40, 30);
 
 
         btn10.setOnAction(event -> setBet(10,popupwindow));
@@ -386,28 +406,45 @@ public class App extends Application {
         btn280.setOnAction(event -> setBet(280,popupwindow));
         btn290.setOnAction(event -> setBet(290,popupwindow));
         btn300.setOnAction(event -> setBet(300,popupwindow));
+        btn310.setOnAction(event -> setBet(310,popupwindow));
+        btn320.setOnAction(event -> setBet(320,popupwindow));
+        btn330.setOnAction(event -> setBet(330,popupwindow));
+        btn340.setOnAction(event -> setBet(340,popupwindow));
+        btn350.setOnAction(event -> setBet(350,popupwindow));
+        btn360.setOnAction(event -> setBet(360,popupwindow));
+        btn380.setOnAction(event -> setBet(380,popupwindow));
+        btn390.setOnAction(event -> setBet(390,popupwindow));
+        btn400.setOnAction(event -> setBet(400,popupwindow));
 
         VBox vBox = new VBox(10);
         HBox layout = new HBox(10);
         HBox layout2 = new HBox(10);
         HBox layout3 = new HBox(10);
+        HBox layout4 = new HBox(10);
+
 
         layout.getChildren().addAll(btn10, btn20, btn30, btn40, btn50, btn60, btn70, btn80, btn90, btn100);
-
         layout2.getChildren().addAll(btn110, btn120, btn130, btn140, btn150, btn160, btn170, btn180, btn190, btn200);
-
         layout3.getChildren().addAll(btn210, btn220, btn230, btn240, btn250, btn260, btn270, btn280, btn290, btn300);
+        layout4.getChildren().addAll(btn310, btn320, btn330, btn340, btn350, btn360, btn370, btn380, btn390, btn400);
 
         layout.setAlignment(Pos.CENTER);
         layout2.setAlignment(Pos.CENTER);
+        layout3.setAlignment(Pos.CENTER);
+        layout4.setAlignment(Pos.CENTER);
+
 
         VBox.setMargin(layout, new Insets(10,0, 0, 0));
+        VBox.setMargin(layout2, new Insets(10,0, 0, 0));
+        VBox.setMargin(layout3, new Insets(10,0, 0, 0));
+        VBox.setMargin(layout4, new Insets(10,0, 0, 0));
 
         vBox.getChildren().add(0, layout);
         vBox.getChildren().add(1, layout2);
         vBox.getChildren().add(2, layout3);
+        vBox.getChildren().add(3, layout4);
 
-        Scene scene1 = new Scene(vBox, 500, 130);
+        Scene scene1 = new Scene(vBox, 500, 200);
 
         popupwindow.setScene(scene1);
 
