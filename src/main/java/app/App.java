@@ -3,12 +3,12 @@ package app;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
@@ -29,6 +29,8 @@ public class App extends Application {
     /*private final Button higherButton = new Button("Higher");
     private final Button lowerButton = new Button("Lower");*/
     private final Button setBet = new Button("Bet");
+    private final String winSound = getClass().getResource("/win.mp3").toString();
+    private final AudioClip audioClip = new AudioClip(winSound);
 
     private final Rectangle[] reels = new Rectangle[NUM_REELS];
     private final String[] currentSymbols = new String[NUM_REELS];
@@ -46,7 +48,6 @@ public class App extends Application {
     private final Image cherry = new Image("/cherry.png");
     private final Image plum = new Image("/plum.png");
     private final Image diamond = new Image("/diamond.png");
-
 
     @Override
     public void start(Stage primaryStage) {
@@ -113,6 +114,7 @@ public class App extends Application {
     }
 
     public void spinReels() {
+        audioClip.stop();
         if (account - bet < 0) {
             notEnoughMoneyForBet();
         } else {
@@ -125,6 +127,8 @@ public class App extends Application {
             }
 
             if (isWinningCombination()) {
+                audioClip.setVolume(0.1);
+                audioClip.play();
                 for (String currentSymbol : currentSymbols) {
                     if (currentSymbol.equals("Cherry")) {
                         account += bet * 1.1;

@@ -130,6 +130,15 @@
       <element id="file-copy" path="$USER_HOME$/.jdks/corretto-17.0.7/bin/windowsaccessbridge-64.dll" />
       <element id="file-copy" path="$USER_HOME$/.jdks/corretto-17.0.7/bin/WinFallbackLookup.dll" />
       <element id="file-copy" path="$USER_HOME$/.jdks/corretto-17.0.7/bin/zip.dll" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/main/resources/bell.png" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/main/resources/cherry.png" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/main/resources/diamond.png" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/main/resources/icon.png" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/main/resources/lemon.png" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/main/resources/orange.png" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/main/resources/plum.png" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/main/resources/seven.png" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/main/resources/bar.png" />
     </root>
   </artifact>
 </component>
