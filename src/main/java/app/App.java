@@ -109,7 +109,6 @@ public class App extends Application {
         resultBox.setAlignment(Pos.CENTER);
         resultBox.getChildren().addAll(spinButton/*, higherButton, lowerButton*/, setBet , resultLabel, accountValue, currentBet);
 
-
         return resultBox;
     }
 
