@@ -28,7 +28,7 @@ public class App extends Application {
     private static final Label currentBet = new Label();
     /*private final Button higherButton = new Button("Higher");
     private final Button lowerButton = new Button("Lower");*/
-    private final Button setBet = new Button("Bet");
+    private final Button setBetBtn = new Button("Bet");
     private final String winSound = getClass().getResource("/win.mp3").toString();
     private final AudioClip audioClip = new AudioClip(winSound);
 
@@ -63,7 +63,7 @@ public class App extends Application {
         spinButton.setOnAction(event -> spinReels());
         /*higherButton.setOnAction(event -> betHigher());
         lowerButton.setOnAction(event -> betLower());*/
-        setBet.setOnAction(event -> makeBetWindow());
+        setBetBtn.setOnAction(event -> makeBetWindow());
         resultLabel.setTextFill(Color.RED);
 
         primaryStage.getIcons().add(new Image("/icon.png"));
@@ -107,7 +107,7 @@ public class App extends Application {
     public HBox createResultBox() {
         HBox resultBox = new HBox(10);
         resultBox.setAlignment(Pos.CENTER);
-        resultBox.getChildren().addAll(spinButton/*, higherButton, lowerButton*/, setBet , resultLabel, accountValue, currentBet);
+        resultBox.getChildren().addAll(spinButton/*, higherButton, lowerButton*/, setBetBtn, resultLabel, accountValue, currentBet);
 
         return resultBox;
     }
@@ -200,7 +200,7 @@ public class App extends Application {
         return true;
     }
 
-    public void betHigher() {
+    /*public void betHigher() {
         if (bet < 1000) {
             bet += 10;
             currentBet.setText(String.valueOf(bet));
@@ -217,7 +217,7 @@ public class App extends Application {
             currentBet.setText(String.valueOf(bet));
         }
     }
-
+*/
     // Create a PopUp Window to anounce that you have WON!
     public static void popUpWin() {
         Stage popupwindow = new Stage();
