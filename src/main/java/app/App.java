@@ -417,6 +417,7 @@ public class App extends Application {
         btn140.setOnAction(event -> setBet(140,popupwindow));
         btn150.setOnAction(event -> setBet(150,popupwindow));
         btn160.setOnAction(event -> setBet(160,popupwindow));
+        btn170.setOnAction(event -> setBet(170,popupwindow));
         btn180.setOnAction(event -> setBet(180,popupwindow));
         btn190.setOnAction(event -> setBet(190,popupwindow));
         btn200.setOnAction(event -> setBet(200,popupwindow));
